@@ -1,0 +1,41 @@
+{
+  "multiplier": { "x": 1.5, "y": 2.0 },
+  "slots": [
+    { "id": "draw", "type": "drawpile", "x": -5, "y": 4, "layer": 0 },
+    { "id": "discard", "type": "discardpile", "x": -3, "y": 4, "layer": 0 },
+
+    { "id": "t0", "type": "tableau", "x": 3, "y": 0, "faceUp": false, "layer": 1, "hiddenBy": ["t3", "t4"] },
+    { "id": "t1", "type": "tableau", "x": 4, "y": 0, "faceUp": false, "layer": 1, "hiddenBy": ["t4", "t5"] },
+    { "id": "t2", "type": "tableau", "x": 5, "y": 0, "faceUp": false, "layer": 1, "hiddenBy": ["t5", "t6"] },
+
+    { "id": "t3", "type": "tableau", "x": 3.5, "y": 1, "faceUp": false, "layer": 1, "hiddenBy": ["t7", "t8"] },
+    { "id": "t4", "type": "tableau", "x": 4.5, "y": 1, "faceUp": false, "layer": 1, "hiddenBy": ["t8", "t9"] },
+    { "id": "t5", "type": "tableau", "x": 5.5, "y": 1, "faceUp": false, "layer": 1, "hiddenBy": ["t9", "t10"] },
+
+    { "id": "t6", "type": "tableau", "x": 6.5, "y": 1, "faceUp": false, "layer": 1, "hiddenBy": ["t10", "t11"] },
+    { "id": "t7", "type": "tableau", "x": 4, "y": 2, "faceUp": false, "layer": 1, "hiddenBy": ["t12", "t13"] },
+    { "id": "t8", "type": "tableau", "x": 5, "y": 2, "faceUp": false, "layer": 1, "hiddenBy": ["t13", "t14"] },
+    { "id": "t9", "type": "tableau", "x": 6, "y": 2, "faceUp": false, "layer": 1, "hiddenBy": ["t14", "t15"] },
+
+    { "id": "t10", "type": "tableau", "x": 7, "y": 2, "faceUp": false, "layer": 1, "hiddenBy": ["t15", "t16"] },
+    { "id": "t11", "type": "tableau", "x": 4.5, "y": 3, "faceUp": false, "layer": 1, "hiddenBy": ["t17", "t18"] },
+    { "id": "t12", "type": "tableau", "x": 5.5, "y": 3, "faceUp": false, "layer": 1, "hiddenBy": ["t18", "t19"] },
+    { "id": "t13", "type": "tableau", "x": 6.5, "y": 3, "faceUp": false, "layer": 1, "hiddenBy": ["t19", "t20"] },
+
+    { "id": "t14", "type": "tableau", "x": 7.5, "y": 3, "faceUp": false, "layer": 1, "hiddenBy": ["t20", "t21"] },
+    { "id": "t15", "type": "tableau", "x": 5, "y": 4, "faceUp": false, "layer": 1, "hiddenBy": ["t22", "t23"] },
+    { "id": "t16", "type": "tableau", "x": 6, "y": 4, "faceUp": false, "layer": 1, "hiddenBy": ["t23", "t24"] },
+    { "id": "t17", "type": "tableau", "x": 7, "y": 4, "faceUp": false, "layer": 1, "hiddenBy": ["t24", "t25"] },
+
+    { "id": "t18", "type": "tableau", "x": 6.5, "y": 5, "faceUp": false, "layer": 1, "hiddenBy": ["t26", "t27"] },
+    { "id": "t19", "type": "tableau", "x": 7.5, "y": 5, "faceUp": false, "layer": 1, "hiddenBy": [] },
+    { "id": "t20", "type": "tableau", "x": 5.5, "y": 6, "faceUp": false, "layer": 1, "hiddenBy": [] },
+    { "id": "t21", "type": "tableau", "x": 6.5, "y": 6, "faceUp": false, "layer": 1, "hiddenBy": [] },
+    { "id": "t22", "type": "tableau", "x": 7.5, "y": 6, "faceUp": false, "layer": 1, "hiddenBy": [] },
+    { "id": "t23", "type": "tableau", "x": 8.5, "y": 6, "faceUp": false, "layer": 1, "hiddenBy": [] },
+    { "id": "t24", "type": "tableau", "x": 9.5, "y": 6, "faceUp": false, "layer": 1, "hiddenBy": [] },
+    { "id": "t25", "type": "tableau", "x": 10.5, "y": 6, "faceUp": false, "layer": 1, "hiddenBy": [] },
+    { "id": "t26", "type": "tableau", "x": 11.5, "y": 6, "faceUp": false, "layer": 1, "hiddenBy": [] },
+    { "id": "t27", "type": "tableau", "x": 12.5, "y": 6, "faceUp": false, "layer": 1, "hiddenBy": [] }
+  ]
+}
