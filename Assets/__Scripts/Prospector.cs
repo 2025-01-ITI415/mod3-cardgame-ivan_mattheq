@@ -21,6 +21,8 @@ public class Prospector : MonoBehaviour
     private Deck deck;
     private JsonLayout jsonLayout;
 
+    private Dictionary<int, CardProspector> mineIdToCardDict;
+
     void Start()
     {
         // Set the private Singleton. We’ll use this later.
@@ -84,7 +86,9 @@ public class Prospector : MonoBehaviour
             layoutAnchor = tGO.transform;             // Grab its Transform
         }
 
-        CardProspector cp;                                                    // b
+        CardProspector cp;     
+        
+        mineIdToCardDict = new Dictionary<int, CardProspector>();                                              // b
 
         // Iterate through the JsonLayoutSlots pulled from the JSON_Layout
         foreach (JsonLayoutSlot slot in jsonLayout.slots)
@@ -112,6 +116,8 @@ public class Prospector : MonoBehaviour
             cp.SetSpriteSortingLayer(slot.layer);
 
             mine.Add(cp); // Add this CardProspector to the List<mine
+
+            mineIdToCardDict.Add(slot.id, cp);
         }
     }
 
@@ -186,6 +192,41 @@ public class Prospector : MonoBehaviour
             // Set depth sorting
             cp.SetSpriteSortingLayer(jsonLayout.drawPile.layer);
             cp.SetSortingOrder(-10 * i);
+        }
+    }
+
+    public void SetMineFaceUps(){
+        CardProspector coverCP;
+        foreach (CardProspector cp in mine){
+            bool faceUp = true;
+            foreach(int coverID in cp.layoutSlot.hiddenBy){
+                coverCP = mineIdToCardDict[coverID];
+                if(coverCP == null || coverCP.state == eCardState.mine){
+                    faceUp = false;
+                }
+            }
+            cp.faceUp = faceUp;
+        }
+    }
+
+    static public void CARD_CLICKED(CardProspector cp){
+        switch(cp.state){
+        case eCardState.target:
+            break;
+        case eCardState.drawpile:
+            S.MoveToTarget(S.Draw());
+            S.UpdateDrawPile();
+            break;
+        case eCardState.mine:
+            bool validMatch = true;
+            if(!cp.faceUp) validMatch = false;
+            if(!cp.AdjacentTo(S.target)) validMatch = false;
+            if(validMatch){
+                S.mine.Remove(cp);
+                S.MoveToTarget(cp);
+                S.SetMineFaceUps();
+            }
+            break;
         }
     }
 
