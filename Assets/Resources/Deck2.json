@@ -8,7 +8,7 @@
                 "z": 0.0
             },
             "flip": false,
-            "scale": 1.25
+            "scale": 2.0
         },
         {
             "type": "suit",
@@ -18,7 +18,7 @@
                 "z": 0.0
             },
             "flip": false,
-            "scale": 0.4
+            "scale": 0.01
         },
         {
             "type": "letter",
@@ -28,7 +28,7 @@
                 "z": 0.0
             },
             "flip": true,
-            "scale": 1.25
+            "scale": 2.0
         },
         {
             "type": "suit",
@@ -38,7 +38,7 @@
                 "z": 0.0
             },
             "flip": true,
-            "scale": 0.4
+            "scale": 0.01
         }
     ],
     "cards": [
