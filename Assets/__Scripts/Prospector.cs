@@ -22,6 +22,7 @@ public class Prospector : MonoBehaviour
     private JsonLayout jsonLayout;
 
     private Dictionary<int, CardProspector> mineIdToCardDict;
+    private Dictionary<string, CardProspector> topCard;
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class Prospector : MonoBehaviour
         LayoutMine();
         MoveToTarget( Draw() );
         UpdateDrawPile();
+        UpdateTopCard();
     }
 
     /// <summary>
@@ -195,20 +197,34 @@ public class Prospector : MonoBehaviour
         }
     }
 
-    public void SetMineFaceUps(){
-        CardProspector coverCP;
-        foreach (CardProspector cp in mine){
-            bool faceUp = true;
-            foreach(int coverID in cp.layoutSlot.hiddenBy){
-                coverCP = mineIdToCardDict[coverID];
-                if(coverCP == null || coverCP.state == eCardState.mine){
-                    faceUp = false;
+    // public void SetMineFaceUps(){
+    //     CardProspector coverCP;
+    //     foreach (CardProspector cp in mine){
+    //         bool faceUp = true;
+    //         foreach(int coverID in cp.layoutSlot.hiddenBy){
+    //             coverCP = mineIdToCardDict[coverID];
+    //             if(coverCP == null || coverCP.state == eCardState.mine){
+    //                 faceUp = false;
+    //             }
+    //         }
+    //         cp.faceUp = faceUp;
+    //     }
+    // }
+    public void UpdateTopCard(){
+        topCard = new Dictionary<string, CardProspector>();
+        foreach(CardProspector cp in mine){
+            string col = cp.layoutSlot.layer;
+            if(!topCard.ContainsKey(col)){
+                topCard[col] = cp;
+            }
+            else{
+                CardProspector currTop = topCard[col];
+                if(cp.layoutID > currTop.layoutID){
+                    topCard[col] = cp;
                 }
             }
-            cp.faceUp = faceUp;
         }
     }
-
     static public void CARD_CLICKED(CardProspector cp){
         switch(cp.state){
         case eCardState.target:
@@ -219,12 +235,17 @@ public class Prospector : MonoBehaviour
             break;
         case eCardState.mine:
             bool validMatch = true;
+            string col = cp.layoutSlot.layer;
+            if(!S.topCard.ContainsKey(col) || S.topCard[col] != cp){
+                validMatch = false;
+            }
             if(!cp.faceUp) validMatch = false;
             if(!cp.AdjacentTo(S.target)) validMatch = false;
             if(validMatch){
                 S.mine.Remove(cp);
                 S.MoveToTarget(cp);
-                S.SetMineFaceUps();
+                // S.SetMineFaceUps();
+                S.UpdateTopCard();
             }
             break;
         }

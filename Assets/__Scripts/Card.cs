@@ -252,11 +252,12 @@ public class Card : MonoBehaviour
     }
     public bool AdjacentTo(Card otherCard, bool wrap=true){
         if(!faceUp || !otherCard.faceUp) return (false);
-        if(Mathf.Abs(rank - otherCard.rank) == 1) return (true);
-        if(wrap) {
-            if(rank == 1 && otherCard.rank == 13) return (true);
-            if(rank == 13 && otherCard.rank == 1) return (true);
-        }
-        return (false);
+        return Mathf.Abs(rank - otherCard.rank) == 1;
+        // if(Mathf.Abs(rank - otherCard.rank) == 1) return (true);
+        // if(wrap) {
+        //     if(rank == 1 && otherCard.rank == 13) return (true);
+        //     if(rank == 13 && otherCard.rank == 1) return (true);
+        // }
+        // return (false);
     }
 }
