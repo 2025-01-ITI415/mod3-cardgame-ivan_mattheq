@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "mod3-cardgame-ivan_mattheq.sln"
+    "dotnet.defaultSolution": "golfsolitaire-mattivan.sln"
 }
